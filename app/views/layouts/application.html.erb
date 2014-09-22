@@ -11,25 +11,31 @@
 </head>
 <body>
 
-<nav class="top-bar" data-topbar role="navigation">
+<% if user_signed_in? %>
+  <nav class="top-bar" data-topbar role="navigation">
 
-  <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <li class="has-dropdown">
-        <a href="#">Christine Oen</a>
-        <ul class="dropdown">
-          <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>Logout</li>
-        </ul>
-      </li>
-    </ul>
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li class="has-dropdown">
+          <a href="#"><%= current_user.firstname %> <%= current_user.lastname %></a>
+          <ul class="dropdown">
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %>Logout</li>
+          </ul>
+        </li>
+      </ul>
 
-    <!-- Left Nav Section -->
-    <ul class="left">
-      <li><a href="#"><i class="fa fa-envelope-o"></i></a></li>
-    </ul>
-  </section>
-</nav>
+      <!-- Left Nav Section -->
+      <ul class="left">
+        <li><a href="#"><i class="fa fa-envelope-o"></i></a></li>
+      </ul>
+    </section>
+  </nav>
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+
+<% end %>
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
