@@ -18,9 +18,11 @@
       <!-- Right Nav Section -->
       <ul class="right">
         <li class="has-dropdown">
-          <a href="#"><%= current_user.firstname %> <%= current_user.lastname %></a>
+          <a href="/users/<%=current_user.id%>"><%= current_user.firstname %> <%= current_user.lastname %></a>
           <ul class="dropdown">
-            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %>Logout</li>
+            <li>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+            </li>
           </ul>
         </li>
       </ul>
@@ -28,6 +30,10 @@
       <!-- Left Nav Section -->
       <ul class="left">
         <li><a href="#"><i class="fa fa-envelope-o"></i></a></li>
+      </ul>
+
+      <ul class="left">
+        <li><a href="#">fitmates</a></li>
       </ul>
     </section>
   </nav>
