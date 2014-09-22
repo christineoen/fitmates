@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  resources :tags
+  
+  devise_for :users
+  get '/sign_out' => 'users/sessions#destroy'
+  root to: "welcome#index"
 
+  resources :tags
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

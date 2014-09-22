@@ -1,0 +1,32 @@
+<div class="row">
+  <h2 class="small-5 small-centered columns">Log in</h2>
+</div>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="row">
+    <div class="small-5 small-centered columns">
+      <%= f.email_field :email, placeholder: 'email' , autofocus: true %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="small-5 small-centered columns">
+      <%= f.password_field :password, placeholder: 'password', autocomplete: "off" %>
+    </div>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="row">
+      <div class="small-5 small-centered columns">
+        <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+      </div>
+    </div>
+  <% end -%>
+
+  <div class="row">
+    <div class="small-5 small-centered columns">
+      <%= f.submit "Log in", :class => 'button' %>
+    </div>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>
