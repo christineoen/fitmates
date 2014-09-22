@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   devise_for :users
-  get '/sign_out' => 'users/sessions#destroy'
+  # get '/sign_out' => 'users/sessions#destroy'
   root to: "welcome#index"
 
   resources :tags
