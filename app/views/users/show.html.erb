@@ -1,29 +1,44 @@
 <p id="notice"><%= notice %></p>
 
+<div class="row">
+  <h1>profile</h1>
+</div>
 
-<h1>profile</h1>
-
+<div class="row">
 <p>Activity Tags</p>
+</div>
 
-<% @activity_tags.each do |tag| %>
-  <%= button_to [:tag, @user], params: {tag_id: tag.id} do %>
-  <strong><%= tag.name %></strong>
+<div class="row">
+  <% @activity_tags.each do |tag| %>
+    <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small' do %>
+    <%= tag.name %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
-<p>Goal Tags</p>
-<% @goal_tags.each do |tag| %>
-  <%= button_to [:tag, @user], params: {tag_id: tag.id} do %>
-  <strong><%= tag.name %></strong>
-  <% end %>
-<% end %>
+<div class="row">
+  <p>Goal Tags</p>
+</div>
 
-<p>Interest Tags</p>
-<% @interest_tags.each do |tag| %>
-  <%= button_to [:tag, @user], params: {tag_id: tag.id} do %>
-  <strong><%= tag.name %></strong>
+<div class="row">
+  <% @goal_tags.each do |tag| %>
+    <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small' do %>
+    <%= tag.name %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
+
+<div class="row">
+  <p>Interest Tags</p>
+</div>
+
+<div class="row">
+  <% @interest_tags.each do |tag| %>
+    <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small' do %>
+    <%= tag.name %>
+    <% end %>
+  <% end %>
+</div>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
