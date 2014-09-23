@@ -1,0 +1,7 @@
+<% if @user.tags.include?(tag) %>
+  <%= tag.name %>
+<% else %>
+      <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small' do %>
+    <%= tag.name %>
+    <% end %>
+<% end %>

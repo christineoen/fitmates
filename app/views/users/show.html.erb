@@ -10,8 +10,12 @@
 
 <div class="row">
   <% @activity_tags.each do |tag| %>
-    <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small' do %>
-    <%= tag.name %>
+    <% if @user.tags.include?(tag) %>
+      <%= tag.name %>
+    <% else %>
+      <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small' do %>
+      <%= tag.name %>
+      <% end %>
     <% end %>
   <% end %>
 </div>
@@ -22,8 +26,12 @@
 
 <div class="row">
   <% @goal_tags.each do |tag| %>
-    <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small' do %>
-    <%= tag.name %>
+    <% if @user.tags.include?(tag) %>
+      <%= tag.name %>
+    <% else %>
+      <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small' do %>
+      <%= tag.name %>
+      <% end %>
     <% end %>
   <% end %>
 </div>
@@ -34,8 +42,12 @@
 
 <div class="row">
   <% @interest_tags.each do |tag| %>
-    <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small' do %>
-    <%= tag.name %>
+    <% if @user.tags.include?(tag) %>
+      <%= tag.name %>
+    <% else %>
+      <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small' do %>
+      <%= tag.name %>
+      <% end %>
     <% end %>
   <% end %>
 </div>
