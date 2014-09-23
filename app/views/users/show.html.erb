@@ -11,9 +11,9 @@
 <div class="row">
   <% @activity_tags.each do |tag| %>
     <% if @user.tags.include?(tag) %>
-    <%= button_to [:delete_tagging, @user], params: {tag_id: tag.id}, method: :delete, :class => 'small' do %>
-      <%= tag.name %>
-      <% end %>
+      <%= button_to [:delete_tagging, @user], params: {tag_id: tag.id}, method: :delete do %>
+        <%= tag.name %>
+        <% end %>
     <% else %>
       <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small' do %>
       <%= tag.name %>

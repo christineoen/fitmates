@@ -58,7 +58,6 @@ class UsersController < ApplicationController
   def tag
     @user = User.find(params[:id])
     @tag = Tag.find(params[:tag_id])
-
     @user.tags << @tag
     redirect_to @user
   end
