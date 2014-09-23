@@ -13,12 +13,16 @@
 
 <p>Goal Tags</p>
 <% @goal_tags.each do |tag| %>
-<%= tag.name %><br />
+  <%= button_to [:tag, @user], params: {tag_id: tag.id} do %>
+  <strong><%= tag.name %></strong>
+  <% end %>
 <% end %>
 
 <p>Interest Tags</p>
 <% @interest_tags.each do |tag| %>
-<%= tag.name %><br />
+  <%= button_to [:tag, @user], params: {tag_id: tag.id} do %>
+  <strong><%= tag.name %></strong>
+  <% end %>
 <% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
