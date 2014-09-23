@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users do
     member do
       post 'tag'
-      delete 'tag'
+      delete 'delete_tagging'
     end
   end
 
