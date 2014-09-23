@@ -28,13 +28,18 @@
       </ul>
 
       <!-- Left Nav Section -->
+      
       <ul class="left">
         <li><a href="#"><i class="fa fa-envelope-o"></i></a></li>
       </ul>
 
-      <ul class="left">
-        <li><a href="#">fitmates</a></li>
-      </ul>
+      <!-- Center Nav Section -->
+      <div class="small-3 small-centered columns">
+        <ul class="left">
+          <li><a href="#">fitmates</a></li>
+        </ul>
+      </div>
+
     </section>
   </nav>
 <% else %>
@@ -43,8 +48,8 @@
 
 <% end %>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+<!--   <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p> -->
 
 <%= yield %>
 <%= javascript_include_tag "application" %>

@@ -10,6 +10,10 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @tags = Tag.all
+    @activity_tags = Tag.where(category: "activity")
+    @goal_tags = Tag.where(category: "goal")
+    @interest_tags = Tag.where(category: "interest")
   end
 
   # GET /users/new
@@ -49,6 +53,15 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def tag
+    @user = User.find(params[:id])
+    @tag = Tag.find(params[:tag_id])
+    # Tagging.create(user_id: @user.id, tag_id: @tag.id)
+
+    @user.tags << @tag
+    redirect_to @user
   end
 
   # DELETE /users/1

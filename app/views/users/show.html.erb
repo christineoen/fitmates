@@ -1,4 +1,25 @@
 <p id="notice"><%= notice %></p>
 
+
+<h1>profile</h1>
+
+<p>Activity Tags</p>
+
+<% @activity_tags.each do |tag| %>
+  <%= button_to [:tag, @user], params: {tag_id: tag.id} do %>
+  <strong><%= tag.name %></strong>
+  <% end %>
+<% end %>
+
+<p>Goal Tags</p>
+<% @goal_tags.each do |tag| %>
+<%= tag.name %><br />
+<% end %>
+
+<p>Interest Tags</p>
+<% @interest_tags.each do |tag| %>
+<%= tag.name %><br />
+<% end %>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

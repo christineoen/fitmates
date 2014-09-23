@@ -32,6 +32,10 @@ Tag.create([
     category: "activity" 
   },
   {
+    name: "swimming",
+    category: "activity" 
+  },
+  {
     name: "music",
     category: "interest" 
   },
@@ -54,6 +58,23 @@ Tag.create([
   {
     name: "cats",
     category: "interest" 
+  },
+  {
+    name: "weight loss",
+    category: "goal"
+  },
+  {
+    name: "training for marathon",
+    category: "goal"
+  },
+  {
+    name: "training for triathlon",
+    category: "goal"
+  },
+  {
+    name: "find healthy friends",
+    category: "goal"
   }
 ])
+
   
