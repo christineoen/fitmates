@@ -18,7 +18,13 @@
       <!-- Right Nav Section -->
       <ul class="right">
         <li class="has-dropdown">
-          <a href="/users/<%=current_user.id%>"><%= current_user.firstname %> <%= current_user.lastname %></a>
+          <% if current_user.photo %>
+            <a href="/users/<%=current_user.id%>">
+              <%= image_tag current_user.photo.url(:thumb) %> <%=current_user.firstname %> <%= current_user.lastname %></a>
+            <% else %>
+              <a href="/users/<%=current_user.id%>">
+              <%= current_user.firstname %> <%= current_user.lastname %></a>
+            <% end %>
           <ul class="dropdown">
             <li>
               <%= link_to "Logout", destroy_user_session_path, method: :delete %>
