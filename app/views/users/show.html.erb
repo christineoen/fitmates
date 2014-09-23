@@ -5,6 +5,16 @@
 </div>
 
 <div class="row">
+  <%= form_for @user, :url => user_path, method: :put, :html => { :multipart => true } do |form| %>
+    <%= form.file_field :photo %>
+    <%= form.submit "Submit" %>
+  <% end %>
+</div>
+<div class="row">
+  <%= image_tag @user.photo.url(:medium) %>
+</div>
+
+<div class="row">
 <p>Activity Tags</p>
 </div>
 
