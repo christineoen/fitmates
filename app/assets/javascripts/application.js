@@ -14,14 +14,14 @@
 //= require jquery_ujs
 //= require foundation
 //= require best_in_place
-//= require jquery-ui
-//= require best_in_place.jquery-ui
+//= require jquery.purr
+//= require best_in_place.purr
 //= require turbolinks
 //= require_tree .
-
-$(function(){ $(document).foundation(); });
 
 $(document).ready(function() {
   /* Activating Best In Place */
   jQuery(".best_in_place").best_in_place();
 });
+
+$(function(){ $(document).foundation(); });

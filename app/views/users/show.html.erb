@@ -9,6 +9,8 @@
       <%= image_tag @user.photo.url(:medium) %>
     </div>
 
+    <%= best_in_place @user, :lastname, :type => :input %>
+
     <div>
       <%= form_for @user, :url => user_path, method: :put, :html => { :multipart => true } do |form| %>
         <%= form.file_field :photo %>
