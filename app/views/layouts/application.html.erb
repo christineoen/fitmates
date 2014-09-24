@@ -27,7 +27,13 @@
             <% end %>
           <ul class="dropdown">
             <li>
-              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+              <a href="/">home</a>
+            </li>
+            <li>
+              <a href="#">messages</a>
+            </li>
+            <li>
+              <%= link_to "logout", destroy_user_session_path, method: :delete %>
             </li>
           </ul>
         </li>
@@ -40,10 +46,10 @@
       </ul>
 
       <!-- Center Nav Section -->
-      <div class="small-3 small-centered columns">
-        <ul class="left">
-          <li><a href="/">fitmates</a></li>
-        </ul>
+      <div class="row">
+        <div class="small-3 small-centered columns">
+          <a href="/">fitmates</a>
+        </div>
       </div>
 
     </section>

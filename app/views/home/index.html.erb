@@ -1,1 +1,7 @@
 <h1>home page</h1>
+
+<% @users.each do |u| %>
+<%= u.firstname %>
+<%= u.lastname %>
+<%= link_to (image_tag u.photo.url(:small)), user_path(id: u.id) %>
+<% end %>
