@@ -5,11 +5,30 @@
 
     <h1>profile</h1>
 
-    <div>
-      <%= image_tag @user.photo.url(:medium) %>
+    <div class="row">
+      <div class="large-5 columns">
+        <%= image_tag @user.photo.url(:medium) %>
+      </div>
+      <div class="large-7 columns">
+        <p>
+        Name:
+          <%= best_in_place_if current_user, @user, :firstname, :type => :input %>
+        <%= best_in_place_if current_user, @user, :lastname, :type => :input %>
+        </p>
+        <p>
+        Age:
+          <%= best_in_place_if current_user, @user, :age, :type => :input %>
+        </p>
+        <p>
+        Gender:
+          <%= best_in_place_if current_user, @user, :gender, :type => :select, :collection => ['male', 'female', 'n/a'] %>
+        </p>
+        <p>
+        Description:
+          <%= best_in_place_if current_user, @user, :description, :type => :textarea, :nil => "Click me to add a description!" %>
+        </p>
+      </div>
     </div>
-
-    <%= best_in_place @user, :lastname, :type => :input %>
 
     <div>
       <%= form_for @user, :url => user_path, method: :put, :html => { :multipart => true } do |form| %>
