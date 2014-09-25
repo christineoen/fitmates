@@ -1,71 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fitmates</title>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <!-- <link rel="stylesheet" href="css/app.css"> -->
-  <%= javascript_include_tag 'vendor/modernizr', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fitmates</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'vendor/modernizr', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 <body>
 
-<% if user_signed_in? %>
-  <nav class="top-bar" data-topbar role="navigation">
+  <% if user_signed_in? %>
+    <%= render "home/nav" %>
+  <% end %>
 
-    <section class="top-bar-section">
-      <!-- Right Nav Section -->
-      <ul class="right">
-        <li class="has-dropdown">
-          <% if current_user.photo %>
-            <a href="/users/<%=current_user.id%>">
-              <%= image_tag current_user.photo.url(:thumb) %> <%=current_user.firstname %> <%= current_user.lastname %></a>
-            <% else %>
-              <a href="/users/<%=current_user.id%>">
-              <%= current_user.firstname %> <%= current_user.lastname %></a>
-            <% end %>
-          <ul class="dropdown">
-            <li>
-              <a href="/">home</a>
-            </li>
-            <li>
-              <a href="#">messages</a>
-            </li>
-            <li>
-              <%= link_to "logout", destroy_user_session_path, method: :delete %>
-            </li>
-          </ul>
-        </li>
-      </ul>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
-      <!-- Left Nav Section -->
-      
-      <ul class="left">
-        <li><a href="#"><i class="fa fa-envelope-o"></i></a></li>
-      </ul>
-
-      <!-- Center Nav Section -->
-      <div class="row">
-        <div class="small-3 small-centered columns">
-          <p class="fitmate-header"><a href="/">fitmates</a></p>
-        </div>
-      </div>
-
-    </section>
-  </nav>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-
-<% end %>
-
-<!--   <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p> -->
-
-<%= yield %>
-<%= javascript_include_tag "application" %>
+  <%= yield %>
+  <%= javascript_include_tag "application" %>
 </body>
 </html>
