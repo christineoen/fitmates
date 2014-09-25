@@ -1,8 +1,37 @@
+.fitmate-header {
+  text-align: center;
+  line-height: 3em;
+}
+
+.fitmate-header a, .fitmate-header a:visited {
+  color: white;  
+}
+
+p {
+  margin-bottom: 10px; !important;
+}
+
+.has-dropdown a img {
+  border-radius: 3px;
+}
+
 .feed-wrapper {
-  background-color: #dddddf;
-  margin-top: -3px;
+  box-shadow: 5px;
+  margin-top: 20px;
 }
 
 .feed-profile {
-  border-style: groove;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+  border-radius: 3px;
 }
+
+.feed-profile img {
+  -moz-box-shadow: 0 0 5px #888;
+  -webkit-box-shadow: 0 0 5px#888;
+  box-shadow: 0 0 5px #888;
+  border-radius: 3px;
+}
+
+

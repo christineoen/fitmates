@@ -3,9 +3,7 @@
 <div class="row">
   <div class="small-8 small-centered columns profile-wrapper">
 
-    <h1>profile</h1>
-
-    <div class="row">
+    <div class="row user-profile">
       <div class="small-5 columns">
         <%= image_tag @user.photo.url(:medium) %>
       </div>
@@ -39,17 +37,18 @@
       <% end %>
     </div>
 
-    <p>Activities</p>
+    <div class="profile-tag-container">
 
-    <div>
+    <div class="clear-float">
+    <p class="tag-title">Activities</p>
       <% @activity_tags.each do |tag| %>
         <% if current_user == @user %>
           <% if @user.tags.include?(tag) %>
-            <%= button_to [:delete_tagging, @user], params: {tag_id: tag.id}, method: :delete do %>
+            <%= button_to [:delete_tagging, @user], params: {tag_id: tag.id}, method: :delete, :class => 'small radius profile-tag-selected' do %>
             <%= tag.name %>
             <% end %>
           <% else %>
-            <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small radius' do %>
+            <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small radius profile-tag-deselected' do %>
             <%= tag.name %>
             <% end %>
           <% end %>
@@ -61,17 +60,17 @@
       <% end %>
     </div>
 
-    <p>Goals</p>
 
-    <div>
+    <div class="clear-float">
+    <p class="tag-title">Goals</p>
       <% @goal_tags.each do |tag| %>
         <% if current_user == @user %>
           <% if @user.tags.include?(tag) %>
-            <%= button_to [:delete_tagging, @user], params: {tag_id: tag.id}, method: :delete do %>
+            <%= button_to [:delete_tagging, @user], params: {tag_id: tag.id}, method: :delete, :class => 'small radius profile-tag-selected' do %>
             <%= tag.name %>
             <% end %>
           <% else %>
-            <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small radius' do %>
+            <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small radius profile-tag-deselected' do %>
             <%= tag.name %>
             <% end %>
           <% end %>
@@ -83,28 +82,30 @@
       <% end %>
     </div>
 
-    <p>Interests</p>
 
-    <div>
+    <div class="clear-float">
+    <p class="tag-title">Interests</p>
       <% @interest_tags.each do |tag| %>
         <% if current_user == @user %>
           <% if @user.tags.include?(tag) %>
-            <%= button_to [:delete_tagging, @user], params: {tag_id: tag.id}, method: :delete do %>
+            <%= button_to [:delete_tagging, @user], params: {tag_id: tag.id}, method: :delete, :class => 'small radius profile-tag-selected' do %>
             <%= tag.name %>
             <% end %>
           <% else %>
-            <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small radius' do %>
+            <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small radius profile-tag-deselected' do %>
             <%= tag.name %>
             <% end %>
           <% end %>
         <% else %>
           <% if @user.tags.include?(tag) %>
-            <div class="disabled button small"><%= tag.name %></div>          
+            <div class="disabled button small"><%= tag.name %></div>    
           <% end %>
         <% end %>
       <% end %>
     </div>
   </div>
+</div>
+
 </div>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

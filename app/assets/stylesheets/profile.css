@@ -1,4 +1,32 @@
 .profile-wrapper {
-  background-color: #dddddf;
-  margin-top: -23px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+  border-radius: 3px;
+}
+
+.user-profile img {
+  -moz-box-shadow: 0 0 5px #888;
+  -webkit-box-shadow: 0 0 5px#888;
+  box-shadow: 0 0 5px #888;
+  border-radius: 3px;
+}
+
+.profile-tag-selected {
+  float: left;
+  margin: 5px;
+}
+
+.profile-tag-deselected {
+  float: left;
+  background-color: #C5C5C2;
+  margin: 5px;
+}
+
+.clear-float {
+  clear: both;
+}
+
+.profile-tag-container {
+  border: 1px solid red;
 }

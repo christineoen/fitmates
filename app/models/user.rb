@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   validates_attachment_file_name :photo, :matches => [/png\Z/, /jpe?g\Z/, /gif\Z/]
   has_many :taggings
   has_many :tags, through: :taggings
+  acts_as_messageable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
