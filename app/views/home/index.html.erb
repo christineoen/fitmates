@@ -11,11 +11,14 @@
             <p><%= user.firstname %> <%= user.lastname %></p>
             <p>gender: <%= user.gender %></p>
             <p>age: <%= user.age %></p>
-            <p>about me: <%= user.description %></p>
+            <% if user.location %>
+              <p>city: <%= user.location.city %></p>
+            <% end %>
+            <% if user.description != nil %>
+              <p>about me: <%= user.description %></p>
+            <% end %>
           </div>
         </div>
-        <br />
-        <br />
       <% end %>
     </div>
 

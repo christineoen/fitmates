@@ -41,6 +41,10 @@ p {
   border-radius: 3px;
 }
 
+.row.feed-profile {
+  margin-bottom: 30px;
+}
+
 .feed-profile img {
   -moz-box-shadow: 0 0 5px #888;
   -webkit-box-shadow: 0 0 5px#888;
