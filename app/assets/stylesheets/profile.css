@@ -13,6 +13,11 @@
   border-radius: 3px;
 }
 
+.tag-button .profile-tag-selected { display: none; }
+
+.tag-button.selected .profile-tag-selected { display: block; }
+.tag-button.selected .profile-tag-deselected { display: none; }
+
 .profile-tag-selected {
   float: left;
   margin: 5px;

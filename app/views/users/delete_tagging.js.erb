@@ -1,0 +1,4 @@
+(function () {
+  var tid = <%= @tag.id %>
+  $( "button[data-id='" + tid + "']" ).parents(".tag-button").toggleClass('selected');
+})();

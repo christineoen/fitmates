@@ -67,14 +67,22 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @tag = Tag.find(params[:tag_id])
     @user.tags << @tag
-    redirect_to @user
+
+    respond_to do |format|
+      format.html { redirect_to @user }
+      format.js {}
+    end
   end
 
   def delete_tagging
     @user = User.find(params[:id])
     @tag = Tag.find(params[:tag_id])
     @user.tags.delete(@tag)
-    redirect_to @user
+
+    respond_to do |format|
+      format.html { redirect_to @user }
+      format.js {}
+    end
   end
 
   # DELETE /users/1

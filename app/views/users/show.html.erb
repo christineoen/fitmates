@@ -69,15 +69,17 @@
     <p class="tag-title">Activities</p>
       <% @activity_tags.each do |tag| %>
         <% if current_user == @user %>
-          <% if @user.tags.include?(tag) %>
-            <%= button_to [:delete_tagging, @user], params: {tag_id: tag.id}, method: :delete, :class => 'small radius profile-tag-selected' do %>
-            <%= tag.name %>
-            <% end %>
-          <% else %>
-            <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small radius profile-tag-deselected' do %>
-            <%= tag.name %>
-            <% end %>
+
+        <span class="tag-button <%= 'selected' if @user.tags.include?(tag) %>">
+          <%= button_to [:delete_tagging, @user], params: {tag_id: tag.id}, method: :delete, :class => 'small radius profile-tag-selected', :"data-id" => tag.id, :remote => true do %>
+          <%= tag.name %>
           <% end %>
+
+          <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small radius profile-tag-deselected', :"data-id" => tag.id, :remote => true do %>
+          <%= tag.name %>
+          <% end %>
+        </span>
+
         <% else %>
           <% if @user.tags.include?(tag) %>
             <div class="disabled button small"><%= tag.name %></div>          
@@ -92,18 +94,20 @@
     <p class="tag-title">Goals</p>
       <% @goal_tags.each do |tag| %>
         <% if current_user == @user %>
-          <% if @user.tags.include?(tag) %>
-            <%= button_to [:delete_tagging, @user], params: {tag_id: tag.id}, method: :delete, :class => 'small radius profile-tag-selected' do %>
+          
+          <span class="tag-button <%= 'selected' if @user.tags.include?(tag) %>">
+            <%= button_to [:delete_tagging, @user], params: {tag_id: tag.id}, method: :delete, :class => 'small radius profile-tag-selected', :"data-id" => tag.id, :remote => true do %>
             <%= tag.name %>
             <% end %>
-          <% else %>
-            <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small radius profile-tag-deselected' do %>
+
+            <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small radius profile-tag-deselected', :"data-id" => tag.id, :remote => true do %>
             <%= tag.name %>
             <% end %>
-          <% end %>
+          </span>
+
         <% else %>
           <% if @user.tags.include?(tag) %>
-            <div class="disabled button small"><%= tag.name %></div>          
+            <div class="disabled button small"><%= tag.name %></div>     
           <% end %>
         <% end %>
       <% end %>
@@ -115,15 +119,17 @@
     <p class="tag-title">Interests</p>
       <% @interest_tags.each do |tag| %>
         <% if current_user == @user %>
-          <% if @user.tags.include?(tag) %>
-            <%= button_to [:delete_tagging, @user], params: {tag_id: tag.id}, method: :delete, :class => 'small radius profile-tag-selected' do %>
-            <%= tag.name %>
-            <% end %>
-          <% else %>
-            <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small radius profile-tag-deselected' do %>
-            <%= tag.name %>
-            <% end %>
+
+        <span class="tag-button <%= 'selected' if @user.tags.include?(tag) %>">
+          <%= button_to [:delete_tagging, @user], params: {tag_id: tag.id}, method: :delete, :class => 'small radius profile-tag-selected', :"data-id" => tag.id, :remote => true do %>
+          <%= tag.name %>
           <% end %>
+
+          <%= button_to [:tag, @user], params: {tag_id: tag.id}, :class => 'small radius profile-tag-deselected', :"data-id" => tag.id, :remote => true do %>
+          <%= tag.name %>
+          <% end %>
+        </span>
+
         <% else %>
           <% if @user.tags.include?(tag) %>
             <div class="disabled button small"><%= tag.name %></div>    
@@ -135,8 +141,7 @@
   </div>
 </div>
 
-
 </div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="footer"></div>
+
