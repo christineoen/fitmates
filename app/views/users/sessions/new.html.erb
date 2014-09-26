@@ -1,9 +1,8 @@
 <!-- topbar -->
 
-<nav class="top-bar landing-page" data-topbar role="navigation">
-  <section class="top-bar-section">
-  </section>
-</nav>
+<div class="home-header">
+  <img src="<%= asset_path( 'fitmates_logo_300x200.png' ) %>">
+</div>
 
 <!-- sign in  -->
 <div class="row">
@@ -16,12 +15,14 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="row">
         <div class="small-10 small-centered columns">
+          <%= f.label :email %>
           <%= f.email_field :email, placeholder: 'email' , autofocus: true %>
         </div>
       </div>
       
       <div class="row">
         <div class="small-10 small-centered columns">
+          <%= f.label :password %>
           <%= f.password_field :password, placeholder: 'password', autocomplete: "off" %>
         </div>
       </div>

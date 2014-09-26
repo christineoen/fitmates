@@ -3,8 +3,22 @@
   line-height: 3em;
 }
 
+.fitmate-header a {
+  width: 100px;
+  display: inline-block;
+}
+
+.fitmate-header a:hover {
+  opacity: 0.7;
+  background: none;
+}
+
+.fitmate-header a img {
+  width: 100%;
+}
+
 .fitmate-header a, .fitmate-header a:visited {
-  color: white;  
+  color: white;
 }
 
 p {
@@ -33,5 +47,6 @@ p {
   box-shadow: 0 0 5px #888;
   border-radius: 3px;
 }
+
 
 
