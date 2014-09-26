@@ -13,30 +13,29 @@
           <%= best_in_place_if current_user == @user, @user, :lastname, :type => :input %>
         </p></span>
         <p>
-          Age:
+          age:
           <%= best_in_place_if current_user == @user, @user, :age, :type => :select, :collection => [18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75] %>
         </p>
         <p>
-          Gender:
+          gender:
           <%= best_in_place_if current_user == @user, @user, :gender, :type => :select, :collection => ['male', 'female', 'n/a'] %>
         </p>
 
         <% if @user.location %>
-          <p>City: <%= @user.location.city %></p>
+          <p>city: <%= @user.location.city %></p>
         <% end %>
 
         <% if current_user == @user %><p>
-          Find users within:
+          find users within:
           <%= best_in_place_if current_user == @user, @user, :search_radius, :type => :select, :collection => [10, 20, 30, 40, 50, '60+'] %> miles of me
         </p><% end %>
 
         <p>
-          About Me:
+          about me:
           <%= best_in_place_if current_user == @user, @user, :description, :type => :textarea, :nil => "Click here to update!" %>
         </p>
       </div>
     </div>
-
 
     <% if current_user == @user %>
       <div class="row">
@@ -50,7 +49,7 @@
     <% end %>
 
     <% if current_user == @user %>
-      <p>Location Info</p>
+      <p class="tag-title">location info</p>
         <div class="row">
           <div class="small-5 columns">
               <%= form_for @location do |f| %>
@@ -62,11 +61,10 @@
         </div>
     <% end %>
 
-
     <div class="profile-tag-container">
 
     <div class="clear-float tag-section">
-    <p class="tag-title">Activities</p>
+    <p class="tag-title">activities</p>
       <% @activity_tags.each do |tag| %>
         <% if current_user == @user %>
 
@@ -89,9 +87,8 @@
     </div>
     <div style="clear: both;"></div>
 
-
     <div class="clear-float tag-section">
-    <p class="tag-title">Goals</p>
+    <p class="tag-title">goals</p>
       <% @goal_tags.each do |tag| %>
         <% if current_user == @user %>
           
@@ -114,9 +111,8 @@
     </div>
     <div style="clear: both;"></div>
 
-
     <div class="clear-float tag-section">
-    <p class="tag-title">Interests</p>
+    <p class="tag-title">interests</p>
       <% @interest_tags.each do |tag| %>
         <% if current_user == @user %>
 

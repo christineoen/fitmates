@@ -18,6 +18,14 @@
   border-radius: 3px;
 }
 
+.tag-title {
+  text-align: center;
+  font-size: 15px;
+  padding: 5px;
+  border-radius: 3px;
+  background-color: #e9e9e9;
+}
+
 .tag-button .profile-tag-selected { display: none; }
 
 .tag-button.selected .profile-tag-selected { display: block; }

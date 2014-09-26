@@ -11,11 +11,12 @@ class User < ActiveRecord::Base
 
 
   def within_radius
+    # return list of users who are within the search radius
     
   end
 
   def similiar_to
-    
+
   end
 
 end
