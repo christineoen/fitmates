@@ -7,8 +7,8 @@
           <div class="small-3 columns">
             <%= link_to (image_tag user.photo.url(:small)), user_path(id: user.id) %>
           </div>
-          <div class="small-9 columns">
-            <p><%= user.firstname %> <%= user.lastname %></p>
+          <div class="small-9 columns feed-profile-info">
+            <p><span class="feed-profile-name"><%= user.firstname %> <%= user.lastname %></p></span>
             <p>gender: <%= user.gender %></p>
             <p>age: <%= user.age %></p>
             <% if user.location %>

@@ -41,6 +41,10 @@ p {
   border-radius: 3px;
 }
 
+.feed-profile-info {
+  margin-top: 5px;
+}
+
 .row.feed-profile {
   margin-bottom: 30px;
 }
@@ -52,5 +56,9 @@ p {
   border-radius: 3px;
 }
 
+.feed-profile-name {
+  font-weight: bold;
+  font-size: 20px;
+}
 
 
