@@ -14,6 +14,9 @@ class UsersController < ApplicationController
     @activity_tags = Tag.where(category: "activity")
     @goal_tags = Tag.where(category: "goal")
     @interest_tags = Tag.where(category: "interest")
+    
+    #initializing location so so that user can enter zip
+    @location = Location.new
   end
 
   # GET /users/new
@@ -48,6 +51,7 @@ class UsersController < ApplicationController
       new_orig_filename = user_params["photo"].original_filename.downcase
       user_params["photo"].original_filename = new_orig_filename
     end
+
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }

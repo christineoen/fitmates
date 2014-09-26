@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20140925212539) do
 
   create_table "locations", force: true do |t|
     t.integer  "zip"
+    t.string   "city"
     t.decimal  "latitude"
     t.decimal  "longitude"
     t.datetime "created_at"
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140925212539) do
     t.string   "gender"
     t.integer  "age"
     t.text     "description"
+    t.integer  "search_radius"
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"

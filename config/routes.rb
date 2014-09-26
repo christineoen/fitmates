@@ -10,12 +10,15 @@ Rails.application.routes.draw do
       end
     end
 
+  resources :locations
+
   resources :tags
 
   resources :users do
     member do
       post 'tag'
       delete 'delete_tagging'
+      put 'location'
     end
   end
 

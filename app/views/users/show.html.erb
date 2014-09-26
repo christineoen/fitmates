@@ -14,15 +14,15 @@
         <%= best_in_place_if current_user == @user, @user, :lastname, :type => :input %>
         </p>
         <p>
-        Age:
+          Age:
           <%= best_in_place_if current_user == @user, @user, :age, :type => :select, :collection => [18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75] %>
         </p>
         <p>
-        Gender:
+          Gender:
           <%= best_in_place_if current_user == @user, @user, :gender, :type => :select, :collection => ['male', 'female', 'n/a'] %>
         </p>
         <p>
-        About Me:
+          About Me:
           <%= best_in_place_if current_user == @user, @user, :description, :type => :textarea, :nil => "Click here to update!" %>
         </p>
       </div>
@@ -32,9 +32,13 @@
       <% if current_user == @user %>
         <%= form_for @user, :url => user_path, method: :put, :html => { :multipart => true } do |form| %>
           <%= form.file_field :photo %>
-          <%= form.submit "submit photo", :class => 'tiny secondary button' %>
+          <%= form.submit "submit photo", :class => 'tiny secondary button', id: 'photo-submit' %>
         <% end %>
       <% end %>
+    </div>
+
+    <div>
+      
     </div>
 
     <div class="profile-tag-container">

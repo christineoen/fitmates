@@ -28,6 +28,6 @@
   clear: both;
 }
 
-.profile-tag-container {
-  /*border: 1px solid red;*/
+#photo-submit {
+  padding: 5px;
 }
