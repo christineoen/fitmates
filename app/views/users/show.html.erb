@@ -27,7 +27,7 @@
 
         <% if current_user == @user %><p>
           find users within:
-          <%= best_in_place_if current_user == @user, @user, :search_radius, :type => :select, :collection => [10, 20, 30, 40, 50, '60+'] %> miles of me
+          <%= best_in_place_if current_user == @user, @user, :search_radius, :type => :select, :collection => [10, 20, 30, 40, 50, 60, 100] %> miles of me
         </p><% end %>
 
         <p>
