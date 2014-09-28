@@ -9,16 +9,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
   def within_radius(search_radius)
     # return list of users who are within the search radius
     # meter * 0.000621371 = mile
     # meter = mile / 0.000621371
-
     radius_in_metres = search_radius / 0.000621371
     latitude = location.latitude.to_s.to_f
     longitude = location.longitude.to_s.to_f
-    query_string = ""
+    query_string = "SELECT * from users WHERE id != #{id} and ("
 
     #find locations within the current users search radius
     locations_within_radius = ActiveRecord::Base.connection.execute("SELECT locations.id, locations.city 
@@ -26,20 +24,58 @@ class User < ActiveRecord::Base
       @> ll_to_earth(locations.latitude, locations.longitude)")
 
     #put location_id's into a string to query users and remove trailing 'or' from string
-    locations_within_radius.each do |location|
-      query_string << "location_id = #{location['id']} or "
-    end
-    query_string = query_string[0..-5]
+    #the brackets are needed in order to remove the current user from the result
+    locations_within_radius.each {|location| query_string << "location_id = #{location['id']} or "}
+    query_string = query_string[0..-5] + ")"
 
-    # find user id's within radius
-    users_within_radius = ActiveRecord::Base.connection.execute("SELECT * from users WHERE #{query_string}")
+    # find users within radius
+    users_within_radius = ActiveRecord::Base.connection.execute("#{query_string}")
   end
 
-  def similiar_to
+  #call it on current_user, pass in user comparing to
+  def similar_to(other_user)
+    @tags = Tag.all
+    base_array = []
+    tag_array1 = []
+    tag_array2 = []
 
+    #put all tag id's available into an array and sort
+    @tags.each {|tag| base_array << tag.id}
+    base_array = base_array.sort
+
+    #put all tag id's belonging to the user being compared to into an array
+    Tagging.where(user_id: other_user.id).each {|tag| tag_array1 << tag.tag_id}
+
+    #put all tag id's belonging to current user into an array
+    tags.each {|tag| tag_array2 << tag.id}
+
+    #create base array length arrays out of each user tag array, putting a 1 in place
+    #of the tag id if the user has that tag, and a zero if they don't
+    tag_array1 = base_array.map {|tag_id| tag_array1.include?(tag_id) ? 1 : 0 }
+    tag_array2 = base_array.map {|tag_id| tag_array2.include?(tag_id) ? 1 : 0 }
+
+    #if one person doesn't have any tags selected return zero, otherwise run cosine similarity
+    #need to do the if statement to avoid NaN errors
+    if tag_array1.inject {|sum, n| sum + n} == 0 || tag_array2.inject {|sum, n| sum + n} == 0
+      return 0
+    else
+      (cosine_similarity(tag_array1, tag_array2).round(2) * 100).round(0)
+    end
+  end
+
+  def dot_product(tag_array1, tag_array2)
+    products = tag_array1.zip(tag_array2).map{|a, b| a * b}
+    products.inject(0) {|s,p| s + p}
+  end
+
+  def magnitude(tag_array)
+    squares = tag_array.map{|x| x ** 2}
+    Math.sqrt(squares.inject(0) {|s, c| s + c})
+  end
+
+  def cosine_similarity(tag_array1, tag_array2)
+    dot_product(tag_array1, tag_array2) / (magnitude(tag_array1) * magnitude(tag_array2))
   end
 
 end
-
-
 

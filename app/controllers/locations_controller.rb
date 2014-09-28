@@ -1,7 +1,6 @@
 class LocationsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :create]
 
-
   def create
     if Location::zip_exists?(location_params['zip'])
       @location = Location.find_by(zip: location_params['zip'])
