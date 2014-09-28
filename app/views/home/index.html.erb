@@ -9,25 +9,24 @@
       </div>
       <% else %>
         <% @users_within_radius.each do |user,percentage| %>
-          <div class="row feed-profile">
-            <div class="small-3 columns">
-              <%= link_to (image_tag user.photo.url(:small)), user_path(id: user.id) %>
+          <a href="users/<%=user.id%>">
+            <div class="row feed-profile">
+              <div class="small-3 columns">
+                <%= image_tag user.photo.url(:small) %>
+              </div>
+              <div class="small-6 columns feed-profile-info">
+                <p><span class="feed-profile-name"><%= user.firstname %> <%= user.lastname %></p></span>
+                <p>gender: <%= user.gender %></p>
+                <p>age: <%= user.age %></p>
+                <% if user.location %>
+                  <p>city: <%= user.location.city %></p>
+                <% end %>
+              </div>
+              <div class="small-3 columns cosine-similarity">
+                <h1><%= percentage %>%</h1>
+              </div>
             </div>
-            <div class="small-6 columns feed-profile-info">
-              <p><span class="feed-profile-name"><%= user.firstname %> <%= user.lastname %></p></span>
-              <p>gender: <%= user.gender %></p>
-              <p>age: <%= user.age %></p>
-              <% if user.location %>
-                <p>city: <%= user.location.city %></p>
-              <% end %>
-              <% if user.description != nil %>
-                <p>about me: <%= user.description %></p>
-              <% end %>
-            </div>
-            <div class="small-3 columns cosine-similarity">
-              <h1><%= percentage %>%</h1>
-            </div>
-          </div>
+          </a>
         <% end %>
 
       <% end %>

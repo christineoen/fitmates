@@ -11,7 +11,6 @@ class HomeController < ApplicationController
         users_within_radius[user] = @user.similar_to(user)
       end
       @users_within_radius = users_within_radius.sort_by {|k,v|v}.reverse
-      # @users_within_radius = SortByMatchPercentage.run(users_within_radius)
     else
       #displays all users except current user before user specifies a search radius 
       user_objects = User.where.not(id: @user.id)
