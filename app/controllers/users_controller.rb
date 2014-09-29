@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @percentage = @user.similar_to(current_user)
     @tags = Tag.all
     @activity_tags = Tag.where(category: "activity")
     @goal_tags = Tag.where(category: "goal")

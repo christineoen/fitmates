@@ -10,8 +10,8 @@
       <div class="small-7 columns profile-info">
         <p>
           <span class="profile-name"><%= best_in_place_if current_user == @user, @user, :firstname, :type => :input %>
-          <%= best_in_place_if current_user == @user, @user, :lastname, :type => :input %>
-        </p></span>
+          <%= best_in_place_if current_user == @user, @user, :lastname, :type => :input %></span><%if @user != current_user%><span class="profile-percentage"><%= @percentage %>%<br /><span class="match">match</span></span><%end%>
+        </p>
         <p>
           age:
           <%= best_in_place_if current_user == @user, @user, :age, :type => :select, :collection => [18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75] %>
