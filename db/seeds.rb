@@ -36,6 +36,30 @@ Tag.create([
     category: "activity" 
   },
   {
+    name: "frisbee",
+    category: "activity" 
+  },
+  {
+    name: "soccer",
+    category: "activity" 
+  },
+  {
+    name: "weight lifting",
+    category: "activity" 
+  },
+  {
+    name: "martial arts",
+    category: "activity" 
+  },
+  {
+    name: "boot camps / group fitness",
+    category: "activity" 
+  },
+  {
+    name: "volleyball",
+    category: "activity" 
+  },
+  {
     name: "music",
     category: "interest" 
   },
@@ -60,7 +84,55 @@ Tag.create([
     category: "interest" 
   },
   {
-    name: "weight loss",
+    name: "camping",
+    category: "interest" 
+  },
+  {
+    name: "traveling",
+    category: "interest" 
+  },
+  {
+    name: "art",
+    category: "interest" 
+  },
+  {
+    name: "road trips",
+    category: "interest" 
+  },
+  {
+    name: "cooking",
+    category: "interest" 
+  },
+  {
+    name: "wine",
+    category: "interest" 
+  },
+  {
+    name: "whiskey",
+    category: "interest" 
+  },
+  {
+    name: "gardening",
+    category: "interest" 
+  },
+  {
+    name: "lose 5 to 15 lbs",
+    category: "goal"
+  },
+  {
+    name: "lose 15 to 30 lbs",
+    category: "goal"
+  },
+  {
+    name: "lose 30+ lbs",
+    category: "goal"
+  },
+  {
+    name: "get toned",
+    category: "goal"
+  },
+  {
+    name: "get ripped",
     category: "goal"
   },
   {
@@ -72,7 +144,19 @@ Tag.create([
     category: "goal"
   },
   {
-    name: "find healthy friends",
+    name: "workout daily",
+    category: "goal"
+  },
+  {
+    name: "workout most days",
+    category: "goal"
+  },
+  {
+    name: "workout a few times a week",
+    category: "goal"
+  },
+  {
+    name: "have fun",
     category: "goal"
   }
 ])
