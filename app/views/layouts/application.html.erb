@@ -36,12 +36,14 @@
 
 <%= javascript_include_tag "application" %>
 
+<% if user_signed_in? %>
 <script>
   if (!localStorage['tutorial']) {
-     $(document).foundation('joyride', 'start');
-     localStorage['tutorial'] = 'yes';
+    $(document).foundation('joyride', 'start');
+    localStorage['tutorial'] = 'yes';
   }
 </script>
+<% end %>
 
 </body>
 </html>
