@@ -1,0 +1,41 @@
+.inbox-conversation {
+  border-bottom: 1px solid #ddd;
+  overflow: hidden;
+}
+
+.inbox-conversation:hover {
+  background-color: #fcfcfc;
+}
+
+.inbox-link:hover {
+  color: black;
+}
+
+.inbox-wrapper {
+  background-color: white;
+  height: 100%;
+  margin-top: 20px;
+}
+
+.inbox-row {
+  height: 100%;
+}
+
+.inbox-picture {
+  width: 75px;
+  border-radius: 3px;
+}
+
+.inbox-conversation img {
+  float: left;
+  margin: 15px 15px 15px 0;
+}
+
+.inbox-name {
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.inbox-conversation:nth-child(1) {
+  border-top: 1px solid #ddd;
+}

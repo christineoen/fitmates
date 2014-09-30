@@ -1,0 +1,23 @@
+<div class="row inbox-row">
+  <div class="small-8 small-centered columns inbox-wrapper">
+
+    <div class="row">
+      <h4 class="small-12 small-centered columns">Messages</h4>
+    </div>
+
+    <% current_user.conversations.each do |conversation| %>
+      <a class="inbox-link" href="/conversations/<%=conversation.id%>" >
+      <div class="row">
+        <div class="small-12 small-centered columns inbox-conversation">
+          <%= image_tag (conversation.users - [current_user]).first.photo.url(:small), :class => "inbox-picture" %>
+          <div class="inbox-text"><h4 class="inbox-name"><%= (conversation.users - [current_user]).first.firstname %>
+          <%= (conversation.users - [current_user]).first.lastname %></h4>
+          <p>blah blah</p></div>
+        </div>
+      </div>
+      </a>
+    <% end %>
+
+  </div>
+</div>
+ 

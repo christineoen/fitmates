@@ -10,9 +10,12 @@ Rails.application.routes.draw do
       end
     end
 
-  resources :locations
+  resources :locations, only: [:create]
 
   resources :tags
+
+  resources :conversations, only: [:index, :show, :create]
+  resources :messages, only: [:create]
 
   resources :users do
     member do
