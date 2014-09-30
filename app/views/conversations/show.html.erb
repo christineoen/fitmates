@@ -5,7 +5,9 @@
     <% @messages.each do |message| %>
       <div class="row">
         <div class="small-2 columns message-picture">
-          <p><%= image_tag message.user.photo.url(:thumb)%></p>
+        <p>
+          <%= link_to (image_tag message.user.photo.url(:thumb)), user_path(id: message.user.id) %>
+        </p>
         </div>
         <div class="small-10 columns message-body">
           <p><%= message.body %></p>
