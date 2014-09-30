@@ -9,6 +9,7 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'vendor/modernizr' %>
     <%= csrf_meta_tags %>
+    
   </head>
 <body>
 
@@ -16,10 +17,31 @@
     <%= render "home/nav" %>
   <% end %>
 
-  <!-- <p class="notice"><%= notice %></p> -->
-  <!-- <p class="alert"><%= alert %></p> -->
-
   <%= yield %>
-  <%= javascript_include_tag "application" %>
+
+<!-- initial login tour -->
+<% if current_user && current_user.sign_in_count == 1 %>
+  <ol class="joyride-list" data-joyride id="tour">
+    <li data-id="first_stop" data-text="Next" data-options="tip_location: top; prev_button: false">
+      <p>you can access your inbox here</p>
+    </li>
+    <li data-id="second_stop" data-text="Next" data-prev-text="Prev">
+      <p>this is your homepage where you'll see matches after you fill in your profile</p>
+    </li>
+    <li data-id="third_stop" data-button="End" data-prev-text="Prev" data-options="tip_location: right;">
+      <p>click here to access and update your profile!</p>
+    </li>
+  </ol>
+<% end %>
+
+<%= javascript_include_tag "application" %>
+
+<script>
+  if (!localStorage['tutorial']) {
+     $(document).foundation('joyride', 'start');
+     localStorage['tutorial'] = 'yes';
+  }
+</script>
+
 </body>
 </html>

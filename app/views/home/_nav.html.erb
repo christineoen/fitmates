@@ -3,7 +3,7 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-      <li class="has-dropdown">
+      <li id="third_stop" class="has-dropdown">
         <% if current_user.photo %>
           <a href="/users/<%=current_user.id%>">
             <%= image_tag current_user.photo.url(:thumb) %> <%=current_user.firstname %> <%= current_user.lastname %></a>
@@ -28,13 +28,13 @@
     <!-- Left Nav Section -->
     
     <ul class="left">
-      <li><a href="/conversations"><i class="fa fa-envelope-o"></i></a></li>
+      <li id="first_stop"><a href="/conversations"><i class="fa fa-envelope-o"></i></a></li>
     </ul>
 
     <!-- Center Nav Section -->
     <div class="row">
       <div class="small-3 small-centered columns">
-        <p class="fitmate-header"><a href="/"><img src="<%= asset_path( 'fitmates_logo_text.png' ) %>" alt=""></a></p>
+        <p class="fitmate-header"><a id="second_stop" href="/"><img src="<%= asset_path( 'fitmates_logo_text.png' ) %>" alt=""></a></p>
       </div>
     </div>
 
