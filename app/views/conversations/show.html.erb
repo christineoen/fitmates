@@ -1,24 +1,31 @@
-
-<% if @messages %>
-  <% @messages.each do |message| %>
-    <div class="row">
-      <div class="small-6 small-centered columns message-body">
-        <%= message.body %>
-      </div>
-    </div>
-  <% end %>
-<% end %>
-
 <div class="row">
-  <div class="small-6 small-centered columns message-form">
-  <%= form_for @message do |f| %>
-    <%= f.label 'message' %>
-    <%= f.text_field :body %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.hidden_field :conversation_id, :value => params['id'] %>
-    <%= f.submit 'send', :class => 'tiny button' %>
+  <div class="small-6 small-centered columns">
+
+  <% if @messages %>
+    <% @messages.each do |message| %>
+      <div class="row">
+        <div class="small-2 columns message-picture">
+          <p><%= image_tag message.user.photo.url(:thumb)%></p>
+        </div>
+        <div class="small-10 columns message-body">
+          <p><%= message.body %></p>
+        </div>
+      </div>
+    <% end %>
   <% end %>
+
+  <div class="row">
+    <div class="small-12 small-centered columns message-form">
+    <%= form_for @message do |f| %>
+      <%= f.label 'message' %>
+      <%= f.text_field :body %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :conversation_id, :value => params['id'] %>
+      <%= f.submit 'send', :class => 'tiny button' %>
+    <% end %>
+    </div>
   </div>
+
+  </div>
+
 </div>
-
-

@@ -9,7 +9,12 @@ class ConversationsController < ApplicationController
   end
 
   def create
-  conversation = Conversation.joins(:participants).where(participants: {user_id: [current_user.id, params['send_to_id']]})
+
+  conversation = Conversation.joins(:participants)
+    .where(:participants => { :user_id => [current_user.id, params['send_to_id']] })
+    .group('conversations.id')
+    .having('COUNT("conversations"."id")=2')
+
     if conversation[0] == nil
       @conversation = Conversation.create
       Participant.create(conversation_id: @conversation.id, user_id: current_user.id)

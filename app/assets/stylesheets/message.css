@@ -1,8 +1,28 @@
 .message-form {
   margin-top: 20px;
+  padding-right: 0px;
+}
+
+.message-container {
+  margin-top: 20px;
 }
 
 .message-body {
   margin-top: 20px;
-  border: 1px solid black;
+  background-color: white;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.message-body p {
+  margin: 10px;
+  padding: 5px;
+}
+
+.message-picture {
+  margin-top: 30px;
+}
+
+.message-picture img {
+  border-radius: 3px;
 }
