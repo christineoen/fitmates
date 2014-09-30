@@ -8,11 +8,19 @@
     <% current_user.conversations.each do |conversation| %>
       <a class="inbox-link" href="/conversations/<%=conversation.id%>" >
       <div class="row">
-        <div class="small-12 small-centered columns inbox-conversation">
-          <%= image_tag (conversation.users - [current_user]).first.photo.url(:small), :class => "inbox-picture" %>
-          <div class="inbox-text"><h4 class="inbox-name"><%= (conversation.users - [current_user]).first.firstname %>
-          <%= (conversation.users - [current_user]).first.lastname %></h4>
-          <p>blah blah</p></div>
+        <div class="small-11 small-centered columns inbox-conversation">
+          <div class="row">
+            <div class="small-2 columns">
+              <%= image_tag (conversation.users - [current_user]).first.photo.url(:small), :class => "inbox-picture" %>
+            </div>
+            <div class="small-10 columns inbox-text">
+              <h4 class="inbox-name">
+                <%= (conversation.users - [current_user]).first.firstname %>
+                <%= (conversation.users - [current_user]).first.lastname %>
+              </h4>
+              <p><%= conversation.messages.last.body[0..20] + "..." %></p>
+            </div>
+            </div>
         </div>
       </div>
       </a>
