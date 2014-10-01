@@ -13,21 +13,25 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   def within_radius(search_radius)
-    # return list of users who are within the search radius
+
     # meter * 0.000621371 = mile
     # meter = mile / 0.000621371
     radius_in_metres = search_radius / 0.000621371
-    latitude = location.latitude.to_s.to_f
-    longitude = location.longitude.to_s.to_f
+
+    # grab current user's location
+    latitude = location.latitude
+    longitude = location.longitude
+
+    # start query string, which removes current user from query
     query_string = "SELECT * from users WHERE id != #{id} and ("
 
-    #find locations within the current users search radius
+    # find locations within the current users search radius using psql extensions cube and earthdistance
     locations_within_radius = ActiveRecord::Base.connection.execute("SELECT locations.id, locations.city 
       FROM locations WHERE earth_box(ll_to_earth(#{latitude}, #{longitude}), #{radius_in_metres}) 
       @> ll_to_earth(locations.latitude, locations.longitude)")
 
-    #put location_id's into a string to query users and remove trailing 'or' from string
-    #the brackets are needed in order to remove the current user from the result
+    # put location_id's into a string to query users and remove trailing 'or' from string
+    # the brackets are needed in order to remove the current user from the result
     locations_within_radius.each {|location| query_string << "location_id = #{location['id']} or "}
     query_string = query_string[0..-5] + ")"
 
@@ -35,8 +39,9 @@ class User < ActiveRecord::Base
     users_within_radius = ActiveRecord::Base.connection.execute("#{query_string}")
   end
 
-  #call it on current_user, pass in user comparing to
   def similar_to(other_user)
+    # called on current_user, pass in user comparing to
+
     @tags = Tag.all
     base_array = []
     tag_array1 = []
@@ -57,8 +62,8 @@ class User < ActiveRecord::Base
     tag_array1 = base_array.map {|tag_id| tag_array1.include?(tag_id) ? 1 : 0 }
     tag_array2 = base_array.map {|tag_id| tag_array2.include?(tag_id) ? 1 : 0 }
 
-    #if one person doesn't have any tags selected return zero, otherwise run cosine similarity
-    #need to do the if statement to avoid NaN errors
+    # if one person doesn't have any tags selected return zero, otherwise run cosine similarity.
+    # need this if statement to avoid NaN errors
     if tag_array1.inject {|sum, n| sum + n} == 0 || tag_array2.inject {|sum, n| sum + n} == 0
       return 0
     else
