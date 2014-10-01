@@ -81,13 +81,24 @@ class User < ActiveRecord::Base
   end
 
   def dot_product(tag_array1, tag_array2)
+    #multiplies each index of the two arrays together to get one number (either zero or 1)
+    #at each index in one array
     products = tag_array1.zip(tag_array2).map{|a, b| a * b}
-    products.inject(0) {|s,p| s + p}
+    #adds up the numbers (all the one's) in the resulting array
+    products.inject {|sum, n| sum + n}
   end
 
   def magnitude(tag_array)
+    # finds the relative size of each array and normalizes them (independently) so they 
+    # can be multiplied together and divided into the sum of the products of the two arrays.
+
+    # the squares step doesn't affect my calculation at the moment because all numbers are
+    # either zero or one but it would be needed if I added a weighting which would increase
+    # those numbers
     squares = tag_array.map{|x| x ** 2}
-    Math.sqrt(squares.inject(0) {|s, c| s + c})
+
+    # adds up each element in the array and takes the square root of the total.
+    Math.sqrt(tag_array.inject {|sum, n| sum + n})
   end
 
   def cosine_similarity(tag_array1, tag_array2)
