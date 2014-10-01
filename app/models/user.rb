@@ -98,7 +98,7 @@ class User < ActiveRecord::Base
     squares = tag_array.map{|x| x ** 2}
 
     # adds up each element in the array and takes the square root of the total.
-    Math.sqrt(tag_array.inject {|sum, n| sum + n})
+    Math.sqrt(squares.inject {|sum, n| sum + n})
   end
 
   def cosine_similarity(tag_array1, tag_array2)
