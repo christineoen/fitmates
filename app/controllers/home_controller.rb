@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   def index
     @users = User.all
     users_within_radius = {}
-    if @user.search_radius && @user.location_id
+    if @user.search_radius && @user.location_id && @user.search_radius != 0
       user_hash = @user.within_radius(@user.search_radius)
       user_objects = user_hash.map {|user| User.create(user)}
       user_objects.each do |user|
