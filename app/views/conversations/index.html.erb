@@ -19,7 +19,11 @@
                 <%= (conversation.users - [current_user]).first.lastname %>
               </h4>
               <% if conversation.messages.last %>
-              <p><%= conversation.messages.last.body[0..20] + "..." %></p>
+                <% if conversation.messages.last.body.length < 30 %>
+                  <p><%= conversation.messages.last.body[0..29] %></p>
+                <% else %>
+                  <p><%= conversation.messages.last.body[0..30] + "..." %></p>
+                <% end %>
               <% end %>
             </div>
             </div>
