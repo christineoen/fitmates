@@ -17,5 +17,3 @@
 
 # Ignore application configuration
 /config/application.yml
-
-cosine_similarity.rb
