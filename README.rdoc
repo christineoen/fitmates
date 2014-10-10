@@ -9,5 +9,5 @@ Ruby 2.1.1
 PostgreSQL 9.3.4
 
 Link to live site:
-http://fitmates.herokuapp.com/
+http://fitmates.herokuapp.com
 
