@@ -2,11 +2,14 @@ class LocationsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :create]
 
   def create
+    # if the zip already exists in the locations table, assign location to user
     if Location::zip_exists?(location_params['zip'])
       @location = Location.find_by(zip: location_params['zip'])
       @user.location_id = @location.id
       @user.save
     else
+    # if location doesn't exist, create a new location and update the lat and long
+    # using a call to the google geocoding api, and assign location to user
       Location.create(zip: location_params['zip'])
       LocationApiCall.run(location_params['zip'])
       location = Location.find_by(zip: location_params['zip'])
