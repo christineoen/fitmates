@@ -1,14 +1,34 @@
 <%= form_for @user, remote: :true do |f| %>
   <div class="row">
-    <div class="small-6">
-    first name: <%= f.text_field :firstname %>
+    <div class="large-6 columns">
+      <%= f.text_field :firstname %>
     </div>
-    <div class="small-6">
-    last name: <%= f.text_field :lastname %>
+    <div class="large-6 columns">
+      <%= f.text_field :lastname %>
     </div>
   </div>
-  age: <%= f.text_field :age %>
-  gender: <%= f.text_field :gender %>
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="row">
+        <div class="large-3 columns">
+          <p class="edit-label">age:</p>
+        </div>
+        <div class="large-9 columns">
+        <%= f.text_field :age %>
+        </div>
+      </div>
+    </div>
+    <div class="large-6 columns">
+      <div class="row">
+        <div class="large-4 columns">
+          <p class="edit-label">gender:</p>
+        </div>
+        <div class="large-8 columns">
+        <%= f.text_field :gender %>
+        </div>
+      </div>
+    </div>
+  </div>
   about me:<%= f.text_area :description %>
-  <%= f.submit 'save' %>
+  <%= f.submit 'save', :class => 'tiny secondary button' %>
 <% end %>

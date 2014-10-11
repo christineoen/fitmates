@@ -94,3 +94,7 @@
 .test-edit:hover {
   color: black;
 }
+
+.edit-label {
+  padding-top: 10px;
+}
