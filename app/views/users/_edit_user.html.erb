@@ -1,0 +1,14 @@
+<%= form_for @user, remote: :true do |f| %>
+  <div class="row">
+    <div class="small-6">
+    first name: <%= f.text_field :firstname %>
+    </div>
+    <div class="small-6">
+    last name: <%= f.text_field :lastname %>
+    </div>
+  </div>
+  age: <%= f.text_field :age %>
+  gender: <%= f.text_field :gender %>
+  about me:<%= f.text_area :description %>
+  <%= f.submit 'save' %>
+<% end %>
