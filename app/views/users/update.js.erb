@@ -1,0 +1,17 @@
+// this file is not being used at the moment
+
+(function () {
+
+    $('#edit-user-form').hide();
+
+    var new_age = $('.age').val();
+
+    var age = <%= @user.age %>
+    console.log(age);
+
+    var radius = <%= @user.search_radius %>
+    console.log(radius);
+
+    $('.test-edit').show();
+
+})();

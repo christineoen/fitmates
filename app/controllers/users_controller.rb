@@ -27,6 +27,12 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+
+    respond_to do |format|
+      format.html { redirect_to @user }
+      format.js {}
+    end
+
   end
 
   # POST /users
@@ -55,13 +61,20 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.html { redirect_to @user }
+        format.js {}
       end
     end
+
+    # respond_to do |format|
+    #   if @user.update(user_params)
+    #     format.html { redirect_to @user, notice: 'User was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @user }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @user.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   def tag

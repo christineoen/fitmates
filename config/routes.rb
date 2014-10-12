@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       end
     end
 
-  resources :locations, only: [:create]
+  resources :locations, only: [:edit, :create]
 
   resources :tags
 
