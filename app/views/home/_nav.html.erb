@@ -12,8 +12,11 @@
             <%= current_user.firstname %> <%= current_user.lastname %></a>
           <% end %>
         <ul class="dropdown">
+        <li>
+          <a href="/users/<%=current_user.id%>">profile</a>
+        </li>
           <li>
-            <a href="/">home</a>
+            <a href="/">fitmates</a>
           </li>
           <li>
             <a href="/conversations">messages</a>
