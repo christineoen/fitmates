@@ -1,8 +1,17 @@
+// this file is not being used at the moment
+
 (function () {
 
-    console.log(this);
-    // $(this).hide();
-    // $('.age-wrapper').html("<textarea></textarea>" + "<button class='edit-submit'>Submit</button>");
+    $('#edit-user-form').hide();
 
+    var new_age = $('.age').val();
+
+    var age = <%= @user.age %>
+    console.log(age);
+
+    var radius = <%= @user.search_radius %>
+    console.log(radius);
+
+    $('.test-edit').show();
 
 })();
