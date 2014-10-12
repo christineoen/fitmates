@@ -1,5 +1,16 @@
 class LocationsController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :create]
+  before_action :set_user, only: [:edit, :create]
+
+
+  def edit
+    @location = Location.new
+
+    respond_to do |format|
+      format.html { redirect_to @user }
+      format.js {}
+    end
+
+  end
 
   def create
     # if the zip already exists in the locations table, assign location to user

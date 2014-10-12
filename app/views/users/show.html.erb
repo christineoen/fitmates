@@ -1,33 +1,50 @@
 <div class="row">
   <div class="small-8 small-centered columns profile-wrapper">
 
+<!-- profile picture -->
     <div class="row user-profile">
       <div class="small-5 columns">
         <%= image_tag @user.photo.url(:medium) %>
       </div>
-      
+
+<!-- div for edit profile form -->
       <div class="small-7 columns" id="edit-user-form"></div>
 
-      <div class="small-7 columns profile-info">
-        <%= link_to edit_user_path, :class => "test-edit", :remote => true do %>
-          <p class="padding">
-            <span class="profile-name"> <%= @user.firstname %> <%= @user.lastname %></span>
-            <%if @user != current_user%>
-              <span class="profile-percentage"><%= @percentage %>%<br />
-              <span class="match">match</span></span>
-            <% else %>
-              <i class="fa fa-pencil-square-o"></i>
+      <% if current_user == @user %>
+<!-- profile info, editable for current user -->
+        <div class="small-7 columns profile-info profile-edit-hover">
+          <%= link_to edit_user_path, :class => "edit-profile", :remote => true do %>
+            <p class="padding">
+              <span class="profile-name"><%= @user.firstname %> <%= @user.lastname %></span>
+              <i class="fa fa-pencil-square-o big"></i>
+            </p>
+            <p>age: <%= @user.age %></p>
+            <p>gender: <%= @user.gender %></p>
+            <p>find users within: <%= @user.search_radius %> miles of me</p>
+            <p>about me: <%= @user.description %></p>
+          <% end %>
+        </div>
+      <% else %>
+<!-- profile info, not editable for other users -->
+        <div class="small-7 columns profile-info">
+          <span class="profile-name"> <%= @user.firstname %> <%= @user.lastname %></span>
+          <span class="profile-percentage">
+            <%= @percentage %>%<br />
+            <span class="match">match</span>
+          </span>
+          <div class="padding">
+            <p>age: <%= @user.age %></p>
+            <p>gender: <%= @user.gender %></p>
+            <% if @user.location %>
+              <p>city: <%= @user.location.city %></p>
             <% end %>
-          </p>
-          <p>age: <%= @user.age %></p>
-          <p>gender: <%= @user.gender %></p>
-          <p>find users within: <%= @user.search_radius %> miles of me</p>
-          <p>about me: <%= @user.description %></p>
-        <% end %>
-
-      </div>
+            <p>about me: <%= @user.description %></p>
+          </div>
+        </div>
+      <% end %>
     </div>
 
+<!-- link to message user if on other users page -->
     <% if current_user != @user %>
       <div class="row">
         <div class="small-5 columns">
@@ -38,6 +55,7 @@
       </div>
     <% end %>
 
+<!-- edit picture -->
     <% if current_user == @user %>
       <div class="row">
       <div class="small-5 columns">
@@ -49,19 +67,31 @@
       </div>
     <% end %>
 
+<!-- edit location -->
     <% if current_user == @user %>
-      <p class="tag-title">location info</p>
-        <div class="row">
-          <div class="small-5 columns">
-              <%= form_for @location do |f| %>
-                <%= f.label :zip %>
-                <%= f.text_field :zip %>
-                <%= f.submit 'submit zip', :class => 'tiny secondary button', id: 'photo-submit' %>
-              <% end %>
-            </div>
-        </div>
+
+    <p class="tag-title">location info</p>
+
+      <div id="edit-location-form"></div>
+
+      <div class="large-3 medium-4 columns location-view">
+        <%= link_to edit_location_path, :class => 'edit-location', :remote => true do %>        
+          <p class="edit-location-hover">
+          <% if @user.location %>
+            zip code: <%= @user.location.zip %> <i class="fa fa-pencil-square-o"></i>
+          <% else %>
+            zip code: <i class="fa fa-pencil-square-o"></i>
+          <% end %>
+          </p>
+        <% end %>
+        <% if @user.location %>
+          <p>city: <%= @user.location.city %></p>
+        <% end %>
+      </div>
+
     <% end %>
 
+<!-- tags -->
     <div class="profile-tag-container">
 
     <div class="clear-float tag-section">

@@ -11,7 +11,7 @@
   margin-top: 10px;
 }
 
-.profile-info:hover {
+.profile-edit-hover:hover {
   background-color: #e9e9e9;
 }
 
@@ -85,14 +85,31 @@
   border-radius: 3px;
 }
 
-.fa-pencil-square-o {
+.fa-pencil-square-o.big {
   color: green;
   font-size: 25px;
   float: right;
 }
 
-.test-edit:hover {
+.fa-pencil-square-o {
+  color: green;
+  font-size: 15px;
+}
+
+.edit-profile:hover {
   color: black;
+}
+
+.edit-location:hover {
+  color: black;
+}
+
+.edit-location-hover:hover {
+  background-color: #e9e9e9;
+}
+
+.edit-location-hover {
+  padding: 3px 0;
 }
 
 .edit-label {
