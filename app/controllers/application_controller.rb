@@ -10,6 +10,12 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
    devise_parameter_sanitizer.for(:sign_up) << :firstname
    devise_parameter_sanitizer.for(:sign_up) << :lastname
+   devise_parameter_sanitizer.for(:sign_up) << :signup_zip
+  end
+
+  def after_sign_up_path_for(user)
+    # "/users/#{user.id}"
+    user
   end
 
 end
